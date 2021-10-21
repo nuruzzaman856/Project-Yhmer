@@ -1,0 +1,84 @@
+﻿@page
+@model YHmer.Pages.Profiles.Organizer.CourseInfoModel
+@{
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-9">
+
+            <!-- User profile -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        @*<i class="fa fa-angle-left" href="#"></i>*@
+                        @*<a href="#">Go Back</a>*@
+
+                        @*<a href="#" class="table-link danger">
+                                <span class="fa-stack">
+                                    <i class="fa fa-angle-left" href="#"></i>
+                                </span>
+                            </a>*@
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    @*<div class="profile__avatar">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/.NET_Logo.svg/1200px-.NET_Logo.svg.png" alt="...">
+                        </div>*@
+                    <div class="profile__header">
+                        <h4>@Model.CourseModel.Name <small>@*Administrator*@</small></h4>
+                        <p class="text-muted">
+                            @Model.CourseModel.About
+                        </p>
+                        @*<p>
+                                <a href="#">bootdey.com</a>
+                            </p>*@
+                    </div>
+                </div>
+            </div>
+
+            <!-- User info -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Kurs information</h4>
+                </div>
+                <div class="panel-body">
+                    <table class="table profile__table">
+                        <tbody>
+                            <tr>
+                                <th>Poäng</th>
+                                <td>@Model.CourseModel.Points</td>
+                            </tr>
+                            <tr>
+                                <th>LIA</th>
+                                <td>@Model.LIAStatus</td>
+                            </tr>
+                            <tr>
+                                <th>Start datum</th>
+                                <td>@Model.CourseModel.StartDate.ToShortDateString()</td>
+                            </tr>
+                            <tr>
+                                <th>Slut datum</th>
+                                <td>@Model.CourseModel.EndDate.ToShortDateString()</td>
+                            </tr>
+                            <tr>
+                                <th>Söker gäst föreläsare</th>
+                                <td>@Model.LookingForGuestLecturers</td>
+                            </tr>
+                            <tr>
+                                <th>Söker utbildare</th>
+                                <td>@Model.LookingForEducators</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+           
+        </div>
+    </div>
+    <div>
+        <a href="../Organizer/EducationInfo?SchoolId=@Model.SchoolId&EducationId=@Model.EducationId">Tillbaka</a>
+    </div>
+</div>

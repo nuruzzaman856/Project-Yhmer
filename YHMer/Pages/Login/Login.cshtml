@@ -1,0 +1,42 @@
+﻿@page
+@model YHmer.Pages.Login.SignInModel
+@{
+}
+
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title mx-auto">Logga in</h3>
+                </div>
+                <div class="panel-body">
+                    <form method="post" accept-charset="UTF-8" role="form">
+                        <fieldset>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="dinmailadress@example.com" name="email" type="text">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Lösenord" name="password" type="password" value="">
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input name="remember" type="checkbox" value="Remember Me"> Kom ihåg mig
+                                </label>
+                            </div>
+                            <input class="btn btn-primary btn-lg btn-block" type="submit" value="Logga in">
+                        </fieldset>
+                    </form>
+                    <hr />
+                    <div>
+                        <span>
+                            <p style="color: red">@Model.HTMLPlaceholderOne</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

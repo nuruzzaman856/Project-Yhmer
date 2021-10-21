@@ -1,0 +1,314 @@
+﻿@page
+@model YHmer.Pages.Profiles.Organizer.EducationInfoModel
+@{
+    int counter = 0;
+}
+
+@*<link href="~/css/info-page-style.css" rel="stylesheet" />*@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-9">
+
+            <!-- User profile -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        @*<i class="fa fa-angle-left" href="#"></i>*@
+                        @*<a href="#">Go Back</a>*@
+
+                        @*<a href="#" class="table-link danger">
+                                <span class="fa-stack">
+                                    <i class="fa fa-angle-left" href="#"></i>
+                                </span>
+                            </a>*@
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    @*<div class="profile__avatar">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/.NET_Logo.svg/1200px-.NET_Logo.svg.png" alt="...">
+                        </div>*@
+                    <div class="profile__header">
+                        <h4>@Model.Education.Name <small>@*Administrator*@</small></h4>
+                        <p class="text-muted">
+                            @Model.Education.About
+                        </p>
+                        @*<p>
+                                <a href="#">bootdey.com</a>
+                            </p>*@
+                    </div>
+                </div>
+            </div>
+
+            <!-- User info -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Utbildnings information</h4>
+                </div>
+                <div class="panel-body">
+                    <table class="table profile__table">
+                        <tbody>
+                            <tr>
+                                <th>Stad</th>
+                                <td>@Model.Education.City</td>
+                            </tr>
+                            <tr>
+                                <th>Poäng</th>
+                                <td>@Model.Education.Points</td>
+                            </tr>
+                            <tr>
+                                <th>LIA</th>
+                                <td>@Model.LIAStatus</td>
+                            </tr>
+                            <tr>
+                                <th>Söker styrelsemedlem</th>
+                                <td>@Model.LookingForBoardMembersStatus</td>
+                            </tr>
+                            <tr>
+                                <th>Start datum</th>
+                                <td>@Model.Education.StartDate.ToShortDateString()</td>
+                            </tr>
+                            <tr>
+                                <th>Slut datum</th>
+                                <td>@Model.Education.EndDate.ToShortDateString()</td>
+                            </tr>
+                            <tr>
+                                <th>Sista ansöknings dag</th>
+                                <td>@Model.Education.LastDateForApplication.ToShortDateString()</td>
+                            </tr>
+                            <tr>
+                                <th>Registreringskod</th>
+                                <td>@Model.Education.RegisterCode</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Community -->
+            @*<div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Community</h4>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table profile__table">
+                            <tbody>
+                                <tr>
+                                    <th><strong>Comments</strong></th>
+                                    <td>58584</td>
+                                </tr>
+
+                                <tr>
+                                    <th><strong>Last login</strong></th>
+                                    <td>1 day ago</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>*@
+
+            <!-- Latest posts -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <br />
+                    <h4 class="panel-title">Kurser</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="profile__comments">
+                        <div class="profile-comments__item">
+
+                            @*<div class="profile-comments__controls">
+                                    <a href="#"><i class="fa fa-share-square-o"></i></a>
+                                    <a href="#"><i class="fa fa-edit"></i></a>
+                                    <a href="#"><i class="fa fa-trash-o"></i></a>
+                                </div>*@
+                            @*<div class="profile-comments__avatar">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="...">
+                                </div>*@
+                            @foreach (var course in Model.ResponseMessageList)
+                            {
+                                string ModalName = "MyName";
+                                counter++;
+                                string ModalId = $"{ModalName}{counter}";
+
+                                <br />
+                                <div class="profile-comments__body">
+                                    <h5 class="profile-comments__sender">
+                                        @course.Name
+                                    </h5>
+                                    <div class="profile-comments__content">
+                                        <p class="text-muted">
+                                            @course.About
+                                        </p>
+                                    </div>
+
+                                    <form class="minibuttons" method="post">
+                                        <a href="/Profiles/Organizer/CourseInfo?EducationId=@Model.EducationId&CourseId=@course.Id&SchoolId=@Model.SchoolId" class="table-link strong">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-info-circle fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </a>
+                                    </form>
+
+                                    <form class="minibuttons" method="post">
+                                        <a href="/Profiles/Organizer/AddCourses?EducationId=@Model.EducationId&CourseId=@course.Id&SchoolId=@Model.SchoolId" class="table-link strong">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </a>
+                                    </form>
+
+                                    <form class="minibuttons" method="post">
+                                        <input value="@course.Id" hidden name="SelectionButton" />
+                                        <input value="DeleteCourse" hidden name="DeleteCourse" />
+
+                                        <a href="#" class="table-link danger" style="color: #fe635f" data-toggle="modal" data-target="#@ModalId">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-times fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </a>
+
+                                        <div class="modal fade" id="@ModalId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Ta bort kurs?</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Vill du ta bort kursen "@course.Name"?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Nej</button>
+                                                        <button name="delete" type="submit" value="Ja" class="btn btn-danger">Ja</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            }
+
+                        </div>
+                        <!--<div class="profile-comments__item">-->
+                        @*<div class="profile-comments__controls">
+                                <a href="#"><i class="fa fa-share-square-o"></i></a>
+                                <a href="#"><i class="fa fa-edit"></i></a>
+                                <a href="#"><i class="fa fa-trash-o"></i></a>
+                            </div>*@
+                        @*<div class="profile-comments__avatar">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="...">
+                            </div>*@
+                        <!--<div class="profile-comments__body">
+                                <h5 class="profile-comments__sender">
+                                    Utveckling mot databaser
+                                </h5>
+                                <div class="profile-comments__content">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero itaque dolor laboriosam dolores magnam mollitia, voluptatibus inventore accusamus illo.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-comments__item">-->
+                        @*<div class="profile-comments__controls">
+                                <a href="#"><i class="fa fa-share-square-o"></i></a>
+                                <a href="#"><i class="fa fa-edit"></i></a>
+                                <a href="#"><i class="fa fa-trash-o"></i></a>
+                            </div>*@
+                        @*<div class="profile-comments__avatar">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="...">
+                            </div>*@
+                        <!--<div class="profile-comments__body">
+                            <h5 class="profile-comments__sender">
+                                Agil utveckling
+                            </h5>
+                            <div class="profile-comments__content">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, esse, magni aliquam quisquam modi delectus veritatis est ut culpa minus repellendus.
+                            </div>
+                        </div>-->
+                        @*</div>*@
+                    </div>
+                </div>
+            </div>
+            <form method="post">
+                <input hidden @*class="profile__contact-btn btn btn-lg btn-block btn-info" data-toggle="modal" data-target="#profile__contact-form"*@ value="Add Courses" name="AddCourse">
+                <a class="btn btn-primary" href="/Profiles/Organizer/AddCourses?EducationId=@Model.EducationId&SchoolId=@Model.SchoolId">Lägg till kurs i utbildning</a>
+            </form>
+        </div>
+
+
+
+
+        <!--<div class="col-xs-12 col-sm-3">
+
+        <!--<!-- Contact user -->
+        <!--<form method="post">
+        <input hidden-->
+        <!--@*class="profile__contact-btn btn btn-lg btn-block btn-info" data-toggle="modal" data-target="#profile__contact-form"*@ value="Add Courses" name="AddCourse">
+            <button type="submit" class="btn btn-primary">Lägg till utbildning</button>
+        </form>-->
+        <!--<hr class="profile__contact-hr">-->
+        <!-- Contact info -->
+        <!--<div class="profile__contact-info">
+            <div class="profile__contact-info-item">
+                <div class="profile__contact-info-icon">
+                    <i class="fa fa-phone"></i>
+                </div>
+                <div class="profile__contact-info-body">
+                    <h5 class="profile__contact-info-heading">Work number</h5>
+                    (000)987-65-43
+                </div>
+            </div>
+            <div class="profile__contact-info-item">
+                <div class="profile__contact-info-icon">
+                    <i class="fa fa-phone"></i>
+                </div>
+                <div class="profile__contact-info-body">
+                    <h5 class="profile__contact-info-heading">Mobile number</h5>
+                    (000)987-65-43
+                </div>
+            </div>
+            <div class="profile__contact-info-item">
+                <div class="profile__contact-info-icon">
+                    <i class="fa fa-envelope-square"></i>
+                </div>
+                <div class="profile__contact-info-body">
+                    <h5 class="profile__contact-info-heading">E-mail address</h5>
+                    <a href="mailto:admin@domain.com">admin@domain.com</a>
+                </div>
+            </div>
+            <div class="profile__contact-info-item">
+                <div class="profile__contact-info-icon">
+                    <i class="fa fa-map-marker"></i>
+                </div>
+                <div class="profile__contact-info-body">
+                    <h5 class="profile__contact-info-heading">Work address</h5>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </div>
+            </div>
+        </div>-->
+        <!--</div>-->
+    </div>
+
+
+    <div>
+        <a href="../Organizer/Educations?EducationId=@Model.EducationId&SchoolId=@Model.SchoolId">Tillbaka</a>
+    </div>
+
+    @*<div>
+            @if (Model.SchoolId != null)
+            {
+                <a href="../Organizer/Educations?EducationId=@Model.EducationId&SchoolId=@Model.SchoolId">Tillbaka</a>
+            }
+            else
+            {
+                <a href="../Organizer/Educations?@Model.SchoolId">Tillbaka</a>
+            }
+        </div>*@
+</div>

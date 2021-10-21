@@ -1,0 +1,55 @@
+﻿@page
+@model YHmer.Pages.Admin.ReplaceSkillModel
+@{
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+<h1>Ersätt @Model.Skill</h1>
+<table class="table user-list">
+    <thead>
+        <tr>
+            <th><span>Kunskap</span></th>
+            <th><span>Är verifierad</span></th>
+            <th><span>Skapad</span></th>
+        </tr>
+    </thead>
+    @foreach (var skill in Model.VerifiedSkills)
+    {
+        <tbody>
+            <tr>
+                <td>
+                    @skill.Name
+                </td>
+                @if (skill.IsVerified)
+                {
+                    <td>
+                        Ja
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        Nej
+                    </td>
+                }
+                <td>
+                    @skill.Created
+                </td>
+                <td>
+                    <form class="minibuttons" method="post">
+                        <input value="@skill.Name" hidden name="ReplaceSkill" />
+                        <a onclick="this.parentElement.submit()" href="#" class="table-link primary">
+                            <span class="fa-stack">
+                                <i class="fa fa-square fa-stack-2x"></i>
+                                <i class="fa fa-exchange fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    }
+</table>

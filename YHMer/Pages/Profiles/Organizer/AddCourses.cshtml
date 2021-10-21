@@ -1,0 +1,107 @@
+﻿@page
+@model YHmer.Pages.Profiles.Organizer.AddCoursesModel
+@{
+}
+
+@if (Model.CourseId != null)
+{
+    <h1>Uppdatera kurs</h1>
+}
+else
+{
+    <h1>Lägg till kurs</h1>
+}
+<br />
+<div class="col">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger" name="Header"></div>
+            <div class="form-group">
+                <label class="control-label">Kurs namn</label>
+                <input asp-for="@Model.Name" class="form-control" name="Name" type="text" />
+                <span class="text-danger" name="ErrorSpan"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Start datum</label>
+                <input asp-for="@Model.StartDate" class="form-control" name="StartDate" type="date" value="@Model.StartDate.ToShortDateString()"/>
+                <span asp-validation-for="@Model.StartDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Slut datum</label>
+                <input asp-for="@Model.EndDate" class="form-control" name="EndDate" type="date" value="@Model.EndDate.ToShortDateString()" />
+                <span asp-validation-for="@Model.EndDate" class="text-danger"></span>
+            </div>
+
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <!-- Default checked -->
+                    <div class="custom-control custom-checkbox">
+                        <input asp-for="@Model.IsLiaCourses" class="custom-control-input" name="IsLiaCourses" type="checkbox" id="check1" />
+                        <label style="padding-left: 2rem" class="custom-control-label" for="check1">Är det en LIA-Kurs</label>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <!-- Default checked -->
+                    <div class="custom-control custom-checkbox">
+                        <input asp-for="@Model.SearchingForEducators" class="custom-control-input" name="SearchingForEducators" type="checkbox" id="check2" />
+                        <label style="padding-left: 2rem" class="custom-control-label" for="check2">Letar efter utbildare</label>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <!-- Default checked -->
+                    <div class="custom-control custom-checkbox">
+                        <input asp-for="@Model.SearchingForGuestLecturer" class="custom-control-input" name="SearchingForGuestLecturer" type="checkbox" id="check3" />
+                        <label style="padding-left: 2rem" class="custom-control-label" for="check3">Letar efter gästföreläsare</label>
+                    </div>
+                </li>
+            </ul>
+
+
+
+            <div class="form-group">
+                <label class="control-label">Poäng</label>
+                <input asp-for="@Model.Points" class="form-control" name="Points" type="number" /> @*Kom ihåg att ta bort negativa tal*@
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Plats</label>
+                <input asp-for="@Model.Location" class="form-control" name="Location" type="text" />
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Kurs information</label>
+                <textarea name="About" cols="40" rows="4" class="form-control">@Model.About</textarea>
+                <span class="text-danger"></span>
+            </div>
+            @if (Model.CourseId != null)
+            {
+                <div class="form-group">
+                    <input type="submit" value="Uppdatera" class="btn btn-primary" />
+                </div>
+            }
+            else
+            {
+                <div class="form-group">
+                    <input type="submit" value="Lägg till" class="btn btn-primary" />
+                </div>
+            }
+
+        </form>
+    </div>
+</div>
+
+<div>
+    @if (Model.EducationId != null)
+    {
+        <a href="../Organizer/EducationInfo?SchoolId=@Model.SchoolId&EducationId=@Model.EducationId">Tillbaka</a>
+    }
+    else
+    {
+        <a href="../Organizer/EducationInfo">Tillbaka</a>
+    }
+</div>

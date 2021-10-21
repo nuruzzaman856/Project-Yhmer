@@ -1,0 +1,132 @@
+﻿@page
+@model YHmer.Pages.Profiles.Students.EducationsModel
+@{
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container">
+
+    @if (Model.Education.IsStudentVerified == true)
+    {
+        <div class="row">
+            <div class="col-xs-12 col-sm-9">
+
+            <!-- User profile -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div class="profile__header">
+                        <h4>@Model.Education.EducationName</h4>
+                        <p class="text-muted">
+                            @Model.Education.About
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User info -->
+            <div class="panel panel-default">
+                @*<div class="panel-heading">
+                        <h4 class="panel-title">>@Model.Education.EducationName</h4>
+                    </div>*@
+                <div class="panel-body">
+                    <table class="table profile__table">
+                        <tbody>
+                            <tr>
+                                <th>Skola</th>
+                                <td>@Model.Education.SchoolName</td>
+                            </tr>
+                            <tr>
+                                <th>Stad</th>
+                                <td>@Model.Education.City</td>
+                            </tr>
+                            <tr>
+                                <th>Yh-poäng</th>
+                                <td>@Model.Education.Points</td>
+                            </tr>
+                            <tr>
+                                <th>Start datum</th>
+                                <td>@Model.Education.StartDate.ToShortDateString()</td>
+                            </tr>
+                            <tr>
+                                <th>Slut datum</th>
+                                <td>@Model.Education.EndDate.ToShortDateString()</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <br />
+                    <h4 class="panel-title">Kurser</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="profile__comments">
+                        <div class="profile-comments__item">
+
+
+                            @foreach (var course in Model.Education.Courses)
+                            {
+                                <br />
+                                <div class="profile-comments__body">
+                                    <h5 class="profile-comments__sender">
+                                        @course.Name
+                                    </h5>
+                                    <div class="profile-comments__content">
+                                        <p class="text-muted">
+                                            @course.About
+                                        </p>
+                                    </div>
+                                    <div class="profile-comments__content">
+                                        <label style="font-weight: bold;">Startdatum</label>
+                                        <p class="text-muted">
+                                            @course.StartDate.ToShortDateString()
+                                        </p>
+                                    </div>
+                                    <div class="profile-comments__content">
+                                        <label style="font-weight: bold;">Slutdatum</label>
+                                        <p class="text-muted">
+                                            @course.EndDate.ToShortDateString()
+                                        </p>
+                                    </div>
+
+
+                                    <form class="minibuttons" method="post">
+                                        <a href="#" class="table-link strong">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-info-circle fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </a>
+                                    </form>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>       
+    }
+    else
+    {
+        <div style="display:flex; justify-content: center; text-align:center; height: 20%; align-content: center;">
+            <div class="col">
+                <h1 style="padding-top: 10%;">
+                    Väntar på verifiering
+                </h1>
+            </div>
+        </div>
+    }
+
+    <div>
+        <a href="../Profile">Tillbaka</a>
+    </div>
+</div>

@@ -1,0 +1,253 @@
+﻿@page
+@model YHmer.Pages.Profiles.Organizer.SchoolInfoModel
+@{
+}
+
+@*<link href="~/css/info-page-style.css" rel="stylesheet" />*@
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-9">
+
+            <!-- User profile -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        @*<i class="fa fa-angle-left" href="#"></i>*@
+                        @*<a href="#">Go Back</a>*@
+
+                        @*<a href="#" class="table-link danger">
+                                <span class="fa-stack">
+                                    <i class="fa fa-angle-left" href="#"></i>
+                                </span>
+                            </a>*@
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    @*<div class="profile__avatar">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/.NET_Logo.svg/1200px-.NET_Logo.svg.png" alt="...">
+                        </div>*@
+                    <div class="profile__header">
+                        <h4>@Model.OutPut.Name <small>@*Administrator*@</small></h4>
+                        <p class="text-muted">
+                            @Model.OutPut.About
+                        </p>
+                        @*<p>
+                                <a href="#">bootdey.com</a>
+                            </p>*@
+                    </div>
+                </div>
+            </div>
+
+            <!-- User info -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Skol information</h4>
+                </div>
+                <div class="panel-body">
+                    <table class="table profile__table">
+                        <tbody>
+                            <tr>
+                                <th>Org nummer</th>
+                                <td>@Model.OutPut.Orgnr</td>
+                            </tr>
+                            <tr>
+                                <th>Kontakt person</th>
+                                <td>@Model.OutPut.ContactPerson</td>
+                            </tr>
+                            <tr>
+                                <th>Kontakt uppgifter</th>
+                                <td>@Model.OutPut.Contacts</td>
+                            </tr>
+                            <tr>
+                                <th>Adress</th>
+                                <td>@Model.OutPut.StreetAdress</td>
+                            </tr>
+                            <tr>
+                                <th>Postkod</th>
+                                <td>@Model.OutPut.PostalCode</td>
+                            </tr>
+                            <tr>
+                                <th>Postort</th>
+                                <td>@Model.OutPut.PostalArea</td>
+                            </tr>
+                            <tr>
+                                <th>Stad</th>
+                                <td>@Model.OutPut.City</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Community -->
+            @*<div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Community</h4>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table profile__table">
+                            <tbody>
+                                <tr>
+                                    <th><strong>Comments</strong></th>
+                                    <td>58584</td>
+                                </tr>
+
+                                <tr>
+                                    <th><strong>Last login</strong></th>
+                                    <td>1 day ago</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>*@
+
+            <!-- Latest posts -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="profile__comments">
+                        <div class="profile-comments__item">
+                            @*<div class="profile-comments__controls">
+                                    <a href="#"><i class="fa fa-share-square-o"></i></a>
+                                    <a href="#"><i class="fa fa-edit"></i></a>
+                                    <a href="#"><i class="fa fa-trash-o"></i></a>
+                                </div>*@
+                            @*<div class="profile-comments__avatar">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="...">
+                                </div>*@
+                            @*@foreach (var course in Model.ResponseMessageList)
+                            {
+                                <br />
+                                <div class="profile-comments__body">
+                                    <h5 class="profile-comments__sender">
+                                        @course.Name
+                                    </h5>
+                                    <div class="profile-comments__content">
+                                        <p class="text-muted">
+                                            @course.About
+                                        </p>
+                                    </div>
+
+                                    <form class="minibuttons" method="post">
+                                        <input value="@course.Id" hidden name="SelectionButton" />
+                                        <input value="RedirectToInfo" hidden name="ReDirectToInfo" />
+                                        <a class="table-link info" href="#" onclick="this.parentElement.submit()">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-info-circle fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </a>
+                                    </form>
+
+                                    <form class="minibuttons" method="post">
+                                        <input value="@course.Id" hidden name="SelectionButton" />
+                                        <input value="DeleteCourse" hidden name="DeleteCourse" />
+                                        <a class="minibuttons-delete" onclick="this.parentElement.submit()" href="#">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-times fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </a>
+                                    </form>
+                                </div>
+
+                            }*@
+
+                        </div>
+                        <!--<div class="profile-comments__item">-->
+                        @*<div class="profile-comments__controls">
+                                <a href="#"><i class="fa fa-share-square-o"></i></a>
+                                <a href="#"><i class="fa fa-edit"></i></a>
+                                <a href="#"><i class="fa fa-trash-o"></i></a>
+                            </div>*@
+                        @*<div class="profile-comments__avatar">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="...">
+                            </div>*@
+                        <!--<div class="profile-comments__body">
+                                <h5 class="profile-comments__sender">
+                                    Utveckling mot databaser
+                                </h5>
+                                <div class="profile-comments__content">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero itaque dolor laboriosam dolores magnam mollitia, voluptatibus inventore accusamus illo.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-comments__item">-->
+                        @*<div class="profile-comments__controls">
+                                <a href="#"><i class="fa fa-share-square-o"></i></a>
+                                <a href="#"><i class="fa fa-edit"></i></a>
+                                <a href="#"><i class="fa fa-trash-o"></i></a>
+                            </div>*@
+                        @*<div class="profile-comments__avatar">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="...">
+                            </div>*@
+                        <!--<div class="profile-comments__body">
+                            <h5 class="profile-comments__sender">
+                                Agil utveckling
+                            </h5>
+                            <div class="profile-comments__content">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, esse, magni aliquam quisquam modi delectus veritatis est ut culpa minus repellendus.
+                            </div>
+                        </div>-->
+                        @*</div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--<div class="col-xs-12 col-sm-3">
+
+            <!--<!-- Contact user -->
+        <!--<form method="post">
+            <input hidden-->
+        <!--@*class="profile__contact-btn btn btn-lg btn-block btn-info" data-toggle="modal" data-target="#profile__contact-form"*@ value="Add Courses" name="AddCourse">
+            <button type="submit" class="btn btn-primary">Lägg till utbildning</button>
+        </form>-->
+        <!--<hr class="profile__contact-hr">-->
+        <!-- Contact info -->
+        <!--<div class="profile__contact-info">
+            <div class="profile__contact-info-item">
+                <div class="profile__contact-info-icon">
+                    <i class="fa fa-phone"></i>
+                </div>
+                <div class="profile__contact-info-body">
+                    <h5 class="profile__contact-info-heading">Work number</h5>
+                    (000)987-65-43
+                </div>
+            </div>
+            <div class="profile__contact-info-item">
+                <div class="profile__contact-info-icon">
+                    <i class="fa fa-phone"></i>
+                </div>
+                <div class="profile__contact-info-body">
+                    <h5 class="profile__contact-info-heading">Mobile number</h5>
+                    (000)987-65-43
+                </div>
+            </div>
+            <div class="profile__contact-info-item">
+                <div class="profile__contact-info-icon">
+                    <i class="fa fa-envelope-square"></i>
+                </div>
+                <div class="profile__contact-info-body">
+                    <h5 class="profile__contact-info-heading">E-mail address</h5>
+                    <a href="mailto:admin@domain.com">admin@domain.com</a>
+                </div>
+            </div>
+            <div class="profile__contact-info-item">
+                <div class="profile__contact-info-icon">
+                    <i class="fa fa-map-marker"></i>
+                </div>
+                <div class="profile__contact-info-body">
+                    <h5 class="profile__contact-info-heading">Work address</h5>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </div>
+            </div>
+        </div>-->
+        <!--</div>-->
+    </div>
+    <div>
+        <a href="../Organizer/Schools">Tillbaka</a>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+﻿@page
+@model YHmer.Pages.SkillAndSearchProfile.SkillInfoModel
+@{
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-9">
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                    </h4>
+                </div>
+                <div class="panel-body">
+
+                    <div class="profile__header">
+                        <h4>@Model.SkillModel.Name </h4>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Kunskap information</h4>
+                </div>
+                <div class="panel-body">
+                    <table class="table profile__table">
+                        <tbody>
+                            <tr>
+                                <th>Kunskap Nivå</th>
+                                <td>@Model.SkillModel.SkillLevel</td>
+                            </tr>
+                            <tr>
+                                <th>Är verifierad</th>
+                                <td>@Model.IsVerified</td>
+                            </tr>
+                            <tr>
+                                <th>År av erfarenhet</th>
+                                <td>@Model.SkillModel.YearsOfSkill</td>
+                            </tr>
+                            <tr>
+                                <th>Skapad</th>
+                                <td>@Model.SkillModel.Created.ToShortDateString()</td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+    <div>
+        <a href="../SkillAndSearchProfile/Skills">Tillbaka</a>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+﻿.display-4 {
+    text-align: start;
+    padding: 4px;
+}
+
+.LandningsText{
+    padding: 4px;
+}
+
+
+.MainTitle {
+    grid-column: 1;
+    grid-row: 1;
+    margin-left:5px;
+}
+
+
+
+.ButtonClass {
+    width: 200px;
+    background-color: dodgerblue;
+    color: white;
+    height: 260px;
+    margin:auto;
+}
+
+.divider-text {
+    position: relative;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+    .divider-text span {
+        padding: 7px;
+        font-size: 12px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .divider-text:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        border-bottom: 1px solid #ddd;
+        top: 55%;
+        left: 0;
+        z-index: 1;
+    }
+
+.col-md-7 {
+    padding: 0;
+}
+
+.btn{
+    margin-top: 2rem;
+}
+
+.minibuttons{
+    display: inline-block;
+}
+
+.minibuttons-delete {
+    color: #fe635f;
+}
+
+    .minibuttons-delete:hover {
+        color: #dc3545;
+    }
+
+.profile-comments__content {
+    display: inline-block;
+    padding: 20px;
+}
+
+profile-comments__sender {
+    text-decoration: underline !important;
+}
+
+.helptext {
+    border: 0.5px solid;
+    border-color: black;
+    padding: 0.8px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.frontPageBackground {
+    background-image: url('https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    height: 100%;
+    width: 100%;
+    background-color: red;
+}

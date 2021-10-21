@@ -1,0 +1,104 @@
+﻿@page
+@model YHmer.Pages.Profiles.Organizer.ManageCoursesModel
+@{
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 ">
+            <div class="list-group" id="mySideBar">
+                <a asp-page="/Profiles/Profile" class="list-group-item list-group-item-action active">Profil</a>
+                <a asp-page="/Profiles/Organizer/Educations" class="list-group-item list-group-item-action">Utbildningar</a> @*To manage and add new eduacations to school + courses*@  <a href="#" class="list-group-item list-group-item-action"></a>
+                <a href="#" class="list-group-item list-group-item-action"></a>
+                <a href="#" class="list-group-item list-group-item-action"></a>
+                <a href="#" class="list-group-item list-group-item-action"></a>
+                <a href="#" class="list-group-item list-group-item-action"></a>
+            </div>
+        </div>
+        <div class="box">
+            <h1>Courses</h1>
+            <div class="col-lg-12">
+                <div class="main-box clearfix">
+                    <div class="table-responsive">
+
+                        <table class="table user-list">
+                            <thead>
+                                <tr>
+                                    <th><span>Name</span></th>
+                                    <th><span>Period</span></th>
+                                    <th><span>Points</span></th>
+                                    <th><span>LIA Course</span></th>
+                                    <th><span>Location</span></th>
+                                </tr>
+                            </thead>
+                            @foreach (var course in Model.ResponseMessageList)
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            @course.Name
+                                        </td>
+                                        <td>
+                                            @course.Period
+                                        </td>
+                                        <td>
+                                            @course.Points
+                                        </td>
+                                        <td>
+                                            @course.IsLiaCourses
+                                        </td>
+                                        <td>
+                                            @course.Location
+                                        </td>
+                                        <td>
+                                            @*<a href="#" class="table-link info">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-info-circle fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>*@
+                                            @*<a href="#" class="table-link strong">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>*@
+
+                                            <form method="post" name="DeleteCourse">
+                                                <input value="@course.Id" hidden name="SelectedCourseID" />
+                                                <a onclick="this.parentElement.submit()" href="#" class="table-link danger">
+                                                    <span class="fa-stack">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-times fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                            </form>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box">
+        <div>
+
+
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
+
+        </div>
+    </div>
+    <form method="post">
+        <input type="submit" onclick="this.parentElement.submit()" value="Add Courses" name="AddCourses" class="btn btn-primary">
+    </form>
+
+</div>

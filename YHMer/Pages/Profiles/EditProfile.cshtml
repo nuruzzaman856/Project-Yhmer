@@ -1,0 +1,267 @@
+﻿@page
+@model YHmer.Pages.EditProfileModel
+@{
+}
+
+<div class="container">
+    <div class="row">
+      
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Ändra profilbild</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form>
+                                <div class="d-flex flex-column align-items-center text-center">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                                    <div class="mt-3">
+                                        <button class="btn btn-primary">Hitta bild</button>
+                                        <button class="btn btn-primary">Spara</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card" style="margin-top:1rem">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Din Profil</h4>
+                            <hr>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form method="post">
+                                @if (Model.ProfileRole == "student")
+                                {
+                                    <div class="form-group row">
+                                        <label for="FirstName" class="col-4 col-form-label">Förnamn*</label>
+                                        <div class="col-8">
+                                            <input id="name" name="FirstName" placeholder="Namn" class="form-control here" type="text" value="@Model.EditProfile.FirstName">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="lastname" class="col-4 col-form-label">Efternamn*</label>
+                                        <div class="col-8">
+                                            <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here" type="text" value="@Model.EditProfile.LastName">
+                                        </div>
+                                    </div>
+                                }
+                                else if (Model.ProfileRole == "company")
+                                {
+                                    <div class="form-group row">
+                                        <label for="CompanyName" class="col-4 col-form-label">Företagsnamn*</label>
+                                        <div class="col-8">
+                                            <input id="CompanyName" name="CompanyName" placeholder="Företagsnamn" class="form-control here" type="text" value="@Model.EditProfile.CompanyName">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="Orgnumber" class="col-4 col-form-label">Organisations nummer*</label>
+                                        <div class="col-8">
+                                            <input id="Orgnumber" name="Orgnumber" placeholder="Orgnr" class="form-control here" type="text" value="@Model.EditProfile.Orgnumber">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="username" class="col-4 col-form-label">Kontaktperson*</label>
+                                        <div class="col-8">
+                                            <input id="ContactPerson" name="ContactPerson" placeholder="Kontaktperson" class="form-control here" type="text" value="@Model.EditProfile.ContactPerson">
+                                        </div>
+                                    </div>
+                                }
+
+                                else if (Model.ProfileRole == "organizer")
+                                {
+                                    <div class="form-group row">
+                                        <label for="CompanyName" class="col-4 col-form-label">Anordnare*</label>
+                                        <div class="col-8">
+                                            <input id="CompanyName" name="CompanyName" placeholder="Anordnare" class="form-control here" type="text" value="@Model.EditProfile.CompanyName">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row"> @* Should be in wizard *@
+                                        <label for="Orgnumber" class="col-4 col-form-label">Organisations nummer*</label>
+                                        <div class="col-8">
+                                            <input id="Orgnumber" name="Orgnumber" placeholder="Orgnr" class="form-control here" type="text" value="@Model.EditProfile.Orgnumber">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="username" class="col-4 col-form-label">Kontaktperson*</label>
+                                        <div class="col-8">
+                                            <input id="ContactPerson" name="ContactPerson" placeholder="Kontaktperson" class="form-control here" @*required="required"*@ type="text" value="@Model.EditProfile.ContactPerson">
+                                        </div>
+                                    </div>
+                                }
+                                <div class="form-group row">
+                                    <label for="username" class="col-4 col-form-label">Telefon</label>
+                                    <div class="col-8">
+                                        <input id="phoneNumber" name="phoneNumber" placeholder="Telefonnummer" class="form-control here" type="text" value="@Model.EditProfile.PhoneNumber">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="username" class="col-4 col-form-label">Address*</label>
+                                    <div class="col-8">
+                                        <input id="Address" name="Address" placeholder="Adress" class="form-control here" type="text" value="@Model.EditProfile.Address">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="username" class="col-4 col-form-label">PostNr*</label>
+                                    <div class="col-8">
+                                        <input maxlength="6" id="PostalCode" name="PostalCode" placeholder="123 45" class="form-control here" type="text" value="@Model.EditProfile.PostalCode">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="username" class="col-4 col-form-label">PostOrt*</label>
+                                    <div class="col-8">
+                                        <input id="PostalArea" name="PostalArea" placeholder="Postort" class="form-control here" type="text" value="@Model.EditProfile.PostalArea">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="username" class="col-4 col-form-label">Stad*</label>
+                                    <div class="col-8">
+                                        <input id="City" name="City" placeholder="Stad" class="form-control here" type="text" value="@Model.EditProfile.City">
+                                    </div>
+                                </div>
+
+                                @*<div class="form-group row">
+                                        <label for="select" class="col-4 col-form-label">Display Name public as</label>
+                                        <div class="col-8">
+                                            <select id="select" name="select" class="custom-select">
+                                                <option value="admin">Admin</option>
+                                            </select>
+                                        </div>
+                                    </div>*@
+                                <div class="form-group row">
+                                    <label for="About" class="col-4 col-form-label">Om</label>
+                                    <div class="col-8">
+                                        <textarea id="About" name="about" cols="40" rows="4" class="form-control">@Model.EditProfile.About</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <div class="custom-control custom-checkbox">
+                                                <input asp-for="@Model.Visible" class="custom-control-input" name="Visible" type="checkbox" id="check1" />
+                                                <label style="padding-left: 2rem" class="custom-control-label" for="check1">Gör profil synlig</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+</div>
+                                <div class="form-group row">
+                                    <div class="offset-4 col-8">
+                                        <input name="update" type="submit" value="Uppdatera min profil" class="btn btn-primary" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="margin-top:1rem">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Radera konto</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form method="post">
+                                <div class="form-group row">
+                                    <div class="offset-4 col-8">
+                                        @*<input name="delete" type="submit" value="Delete Profile" class="btn btn-danger"></input>*@
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                                            Delete
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">DELETE</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Vill du radera kontot?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Nej</button>
+                                                        <input name="delete" type="submit" value="Delete Profile" class="btn btn-danger"></input>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card" style="margin-top:1rem">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Ändra lösenord</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form method="post">
+                                <div class="form-group row">
+                                    <label for="oldpass" class="col-4 col-form-label">Nuvarande lösenord</label>
+                                    <div class="col-8">
+                                        <input id="oldpass" name="oldPass" placeholder="lösenord" class="form-control here" type="password" value="@Model.Password.CurrentPassword">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="newpass" class="col-4 col-form-label">Nytt lösenord</label>
+                                    <div class="col-8">
+                                        <input id="newpass" name="newPass" placeholder="Nytt lösenord" class="form-control here" type="password" value="@Model.Password.NewPassword">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="confirmpass" class="col-4 col-form-label">Bekräfta nytt lösenord</label>
+                                    <div class="col-8">
+                                        <input id="confirmpass" name="confirmPass" placeholder="Nytt lösenord" class="form-control here" type="password" value="@Model.Password.ConfirmNewPassword">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="offset-4 col-8">
+                                        <input name="changePassword" type="submit" class="btn btn-primary" value="Ändra lösenord" />
+                                        @if (!string.IsNullOrEmpty(Model.Message))
+                                        {
+                                            <script type="text/javascript">
+                                                alert("@Model.Message");
+                                            </script>
+                                        }
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <a href="/Profiles/Profile">Tillbaka</a>
+    </div>
+</div>

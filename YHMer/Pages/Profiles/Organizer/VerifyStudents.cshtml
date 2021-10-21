@@ -1,0 +1,149 @@
+﻿@page
+@model YHmer.Pages.Profiles.Organizer.VerifyStudentsModel
+@{
+}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container-fluid">
+
+    <div margin-left:2rem;">
+        <div class="row">
+            <h1>Bekräfta studenter</h1>
+            <div class="col-lg-12">
+                <div class="main-box clearfix">
+                    <div class="table-responsive">
+                        <table class="table user-list">
+                            <thead>
+                                <tr>
+                                    <th><span>Förnamn</span></th>
+                                    <th><span>Efternamn</span></th>
+                                    <th><span>Utbildning</span></th>
+                                    <th><span>Verifierad</span></th>
+                                </tr>
+                            </thead>
+                            @foreach (var student in Model.UnverifiedStudents)
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            @student.FirstName
+                                        </td>
+                                        <td>
+                                            @student.LastName
+                                        </td>
+                                        <td>
+                                            @student.EducationName
+                                        </td>
+                                        @if (student.IsVerified)
+                                        {
+                                            <td>
+                                                Ja
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                Nej
+                                            </td>
+                                        }
+                                        <td style="display:flex; flex-direction: row;">
+                                            <form class="minibuttons" method="post">
+                                                <input value="@student.StudentId" hidden name="VerifyStudentId" />
+                                                <input value="@student.EducationID" hidden name="VerifyStudentEducationId" />
+                                                <a class="table-link info" onclick="this.parentElement.submit()">
+                                                    <span class="fa-stack" style="color: #0366d6;">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-check fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                            </form>
+                                            
+                                            <form class="minibuttons" method="post">
+                                                <input value="@student.StudentId" hidden name="RemoveStudentId" />
+                                                <input value="@student.EducationID" hidden name="RemoveStudentEducationId" />
+
+                                                <a onclick="this.parentElement.submit()" href="#" class="table-link danger">
+                                                    <span class="fa-stack">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-times fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <h1>Verifierade Studenter</h1>
+            <div class="col-lg-12">
+                <div class="main-box clearfix">
+                    <div class="table-responsive">
+                        <table class="table user-list">
+                            <thead>
+                                <tr>
+                                    <th><span>Förnamn</span></th>
+                                    <th><span>Efternamn</span></th>
+                                    <th><span>Utbildning</span></th>
+                                    <th><span>Verifierad</span></th>
+                                </tr>
+                            </thead>
+                            @foreach (var student in Model.VerifiedStudents)
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            @student.FirstName
+                                        </td>
+                                        <td>
+                                            @student.LastName
+                                        </td>
+                                        <td>
+                                            @student.EducationName
+                                        </td>
+                                        @if (student.IsVerified)
+                                        {
+                                            <td>
+                                                Ja
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                Nej
+                                            </td>
+                                        }
+                                        <td style="display:flex; flex-direction: row;">                                           
+                                            <form class="minibuttons" method="post">
+                                                <input value="@student.StudentId" hidden name="RemoveStudentId" />
+                                                <input value="@student.EducationID" hidden name="RemoveStudentEducationId" />
+
+                                                <a onclick="this.parentElement.submit()" href="#" class="table-link danger">
+                                                    <span class="fa-stack">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-times fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <hr />
+    <div>
+        <a href="../Profile">Tillbaka</a>
+    </div>
+</div>

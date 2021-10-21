@@ -1,0 +1,464 @@
+﻿@page
+@model YHmer.Pages.Profiles.Organizer.SearchProfileMatchesModel
+@{
+}
+
+
+<div class="container-fluid">
+    <div class="col-md-12">
+        <div class="col-md-12">
+
+            @if (Model.Role == "company")
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">LIA-matchningar</h4>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table profile__table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Matchad
+                                    </th>
+                                    <th>
+                                        Sök profil
+                                    </th>
+                                    <th>
+                                        Kompetenser
+                                    </th>
+                                    <!--<th>-->
+                                    @*Viktning*@
+                                    <!--</th>-->
+                                    <th>
+                                        Period
+                                    </th>
+                                    <!--<th>-->
+                                    @*Anordnare*@
+                                    <!--</th>-->
+                                    <th>
+                                        Betyg
+                                    </th>
+                                    @*<th>
+                                            Mer information
+                                        </th>*@
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+                                @foreach (var profile in Model.ResponseOne)
+                                {
+                                    if (profile.lia == true && profile.cLia == true && profile.DeniedLia == "false" && profile.AcceptedLia == "false" && profile.AcceptedJob == "false" && profile.DeniedJob == "false" || profile.lia == true && profile.cLia == true && profile.DeniedLia == "false" && profile.AcceptedLia == "false" && profile.AcceptedJob == "false" && profile.DeniedJob == "true" || profile.lia == true && profile.cLia == true && profile.DeniedLia == "false" && profile.AcceptedLia == "false" && profile.AcceptedJob == "true" && profile.DeniedJob == "false")
+                                    {
+                                        <tr>
+                                            <td>@profile.matchedIndividual</td>
+                                            <td>@profile.searchProfile</td>
+                                            <td>@profile.matches / @profile.wantedSkills </td>
+                                            @*<td>@profile.weightOfMatch</td>*@
+                                            <td>@profile.period</td>
+                                            @*<td>@profile.belongsToSchool</td>*@
+                                            <td>@profile.grades</td>
+                                            <td><a href="/Profiles/Profile?StudentId=@profile.studentId">Mer info</a></td>
+
+                                            <td><form method="post"> <input value="@profile.MatchedSearchProfileId" type="text" name="selectedMatchId" hidden /> <input value="@profile.SearchProfileId" type="text" name="selectedId" hidden />  <input class="btn-primary" value="Acceptera" type="submit" name="acceptLia" /> </form></td>
+                                            <td><form method="post"> <input value="@profile.MatchedSearchProfileId" type="text" name="selectedMatchId" hidden /> <input value="@profile.SearchProfileId" type="text" name="selectedId" hidden /> <input class="btn-danger" value="Ta bort" type="submit" name="deleteLia" /> </form></td>
+
+                                        </tr>
+                                    }
+
+                                }
+
+
+
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br />
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Jobb-matchningar</h4>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table profile__table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Matchad
+                                    </th>
+                                    <th>
+                                        Sök profil
+                                    </th>
+                                    <th>
+                                        Kompetenser
+                                    </th>
+                                    <!--<th>-->
+                                    @*Viktning*@
+                                    <!--</th>-->
+                                    <th>
+                                        Period
+                                    </th>
+                                    <!--<th>-->
+                                    @*Anordnare*@
+                                    <!--</th>-->
+                                    <th>
+                                        Betyg
+                                    </th>
+                                    @*<th>
+                                            Mer information
+                                        </th>*@
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var profile in Model.ResponseOne)
+                                {
+
+                                    if (profile.employment == true && profile.cEmployment == true && profile.DeniedJob == "false" && profile.AcceptedJob == "false" && profile.AcceptedLia == "false" && profile.DeniedLia == "false" || profile.employment == true && profile.cEmployment == true && profile.DeniedJob == "false" && profile.AcceptedJob == "false" && profile.AcceptedLia == "false" && profile.DeniedLia == "true" || profile.employment == true && profile.cEmployment == true && profile.DeniedJob == "false" && profile.AcceptedJob == "false" && profile.AcceptedLia == "true" && profile.DeniedLia == "false")
+                                    {
+                                        <tr>
+                                            <td>@profile.matchedIndividual</td>
+                                            <td>@profile.searchProfile</td>
+                                            <td>@profile.matches / @profile.wantedSkills </td>
+                                            @*<td>@profile.weightOfMatch</td>*@
+                                            <td>@profile.period</td>
+                                            @*<td>@profile.belongsToSchool</td>*@
+                                            <td>@profile.grades</td>
+                                            <td><a href="/Profiles/Profile?StudentId=@profile.studentId">Mer info</a></td>
+                                            <td><form method="post"> <input value="@profile.MatchedSearchProfileId" type="text" name="selectedMatchId" hidden /> <input value="@profile.SearchProfileId" type="text" name="selectedId" hidden />  <input class="btn-primary" value="Acceptera" type="submit" name="acceptJob" /> </form></td>
+                                            <td><form method="post"> <input value="@profile.MatchedSearchProfileId" type="text" name="selectedMatchId" hidden /> <input value="@profile.SearchProfileId" type="text" name="selectedId" hidden /> <input class="btn-danger" value="Ta bort" type="submit" name="deleteJob" /> </form></td>
+                                        </tr>
+                                    }
+
+                                }
+
+
+
+                            </tbody>
+
+
+                        </table>
+                    </div>
+                </div>
+            }
+            @if (Model.Role == "student")
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">LIA-matchningar</h4>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table profile__table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Matchad
+                                    </th>
+                                    <th>
+                                        Sök profil
+                                    </th>
+                                    <th>
+                                        Roll
+                                    </th>
+                                    <th>
+                                        Kompetenser
+                                    </th>
+                                    <!--<th>-->
+                                    @*Viktning*@
+                                    <!--</th>-->
+                                    <th>
+                                        Period
+                                    </th>
+                                    <!--<th>-->
+                                    @*Anordnare*@
+                                    <!--</th>-->
+                                    <th>
+                                        Kontaktperson
+                                    </th>
+                                    <th>
+                                        Ort
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var profile in Model.ResponseTwo)
+                                {
+                                    if (profile.LIA == true && profile.cLIA == true && profile.DeniedLia == "false" && profile.AcceptedLia == "false" && profile.DeniedJob == "false" && profile.AcceptedLia == "false")
+                                    {
+                                        <tr>
+                                            <td>@profile.companyName</td>
+                                            <td>@profile.searchProfileName</td>
+                                            <td>@profile.Role</td>
+                                            <td>@profile.matchedSkills / @profile.wantedSkills </td>
+
+                                            <td>@profile.period</td>
+                                            <td>@profile.contactPerson</td>
+                                            <td>@profile.area</td>
+
+                                            <td><a href="/Profiles/Organizer/CompanySearchProfileInfo?SearchProfileId=@profile.MatchedSearchProfileId&Company=@profile.companyName">Mer info</a></td>
+                                            <td><form method="post"> <input value="@profile.MatchedSearchProfileId" type="text" name="selectedMatchId" hidden /> <input value="@profile.SearchProfileId" type="text" name="selectedId" hidden />  <input class="btn-primary" value="Acceptera" type="submit" name="acceptLia" /> </form></td>
+                                            <td><form method="post"> <input value="@profile.MatchedSearchProfileId" type="text" name="selectedMatchId" hidden /> <input value="@profile.SearchProfileId" type="text" name="selectedId" hidden /> <input class="btn-danger" value="Ta bort" type="submit" name="deleteLia" /> </form></td>
+                                        </tr>
+                                    }
+
+
+
+                                }
+
+
+
+                            </tbody>
+
+
+                        </table>
+                    </div>
+                </div>
+                <br />
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Jobb-matchningar</h4>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table profile__table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Matchad
+                                    </th>
+                                    <th>
+                                        Sök profil
+                                    </th>
+                                    <th>
+                                        Roll
+                                    </th>
+                                    <th>
+                                        Kompetenser
+                                    </th>
+                                    <!--<th>-->
+                                    @*Viktning*@
+                                    <!--</th>-->
+                                    <th>
+                                        Period
+                                    </th>
+                                    <!--<th>-->
+                                    @*Anordnare*@
+                                    <!--</th>-->
+                                    <th>
+                                        Kontaktperson
+                                    </th>
+                                    <th>
+                                        Ort
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var profile in Model.ResponseTwo)
+                                {
+                                    if (profile.Employment == true && profile.cEmployment == true && profile.DeniedJob == "false" && profile.AcceptedJob == "false" && profile.DeniedLia == "false" && profile.AcceptedLia == "false")
+                                    {
+                                        <tr>
+                                            <td>@profile.companyName</td>
+                                            <td>@profile.searchProfileName</td>
+                                            <td>@profile.Role</td>
+                                            <td>@profile.matchedSkills / @profile.wantedSkills </td>
+
+                                            <td>@profile.period</td>
+                                            <td>@profile.contactPerson</td>
+                                            <td>@profile.area</td>
+
+
+                                            <td><a href="/Profiles/Organizer/CompanySearchProfileInfo?SearchProfileId=@profile.MatchedSearchProfileId&Company=@profile.companyName">Mer info</a></td>
+                                            <td><form method="post"> <input value="@profile.MatchedSearchProfileId" type="text" name="selectedMatchId" hidden /> <input value="@profile.SearchProfileId" type="text" name="selectedId" hidden />  <input class="btn-primary" value="Acceptera" type="submit" name="acceptJob" /> </form></td>
+                                            <td><form method="post"> <input value="@profile.MatchedSearchProfileId" type="text" name="selectedMatchId" hidden /> <input value="@profile.SearchProfileId" type="text" name="selectedId" hidden /> <input class="btn-danger" value="Ta bort" type="submit" name="deleteJob" /> </form></td>
+                                        </tr>
+                                    }
+
+
+
+                                }
+
+
+
+                            </tbody>
+
+
+                        </table>
+                    </div>
+                </div>
+
+
+            }
+
+
+
+
+        </div>
+
+
+    </div>
+
+    <div class="col-md-12">
+
+        @if (Model.Role == "company")
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Godkänd lista</h4>
+                </div>
+                <div class="panel-body">
+                    <table class="table profile__table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Matchad
+                                </th>
+                                <th>
+                                    Sök profil
+                                </th>
+                                <th>
+                                    Kompetenser
+                                </th>
+                                <!--<th>-->
+                                @*Viktning*@
+                                <!--</th>-->
+                                <th>
+                                    Period
+                                </th>
+                                <!--<th>-->
+                                @*Anordnare*@
+                                <!--</th>-->
+                                <th>
+                                    Betyg
+                                </th>
+                                @*<th>
+                                        Mer information
+                                    </th>*@
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            @foreach (var profile in Model.ResponseOne)
+                            {
+                                if (profile.AcceptedLia == "true" && profile.cLia == true || profile.AcceptedJob == "true" && profile.cEmployment == true)
+                                {
+                                    <tr>
+                                        <td>@profile.matchedIndividual</td>
+                                        <td>@profile.searchProfile</td>
+                                        <td>@profile.matches / @profile.wantedSkills </td>
+                                        @*<td>@profile.weightOfMatch</td>*@
+                                        <td>@profile.period</td>
+                                        @*<td>@profile.belongsToSchool</td>*@
+                                        <td>@profile.grades</td>
+                                        <td><a href="/Profiles/Profile?StudentId=@profile.studentId">Mer info</a></td>
+
+                                        <td><form method="post"> <input value="@profile.MatchedSearchProfileId" type="text" name="selectedMatchId" hidden /> <input value="@profile.SearchProfileId" type="text" name="selectedId" hidden />  <input class="btn-primary" value="Ändra" type="submit" name="Change" /> </form></td>
+
+                                    </tr>
+                                }
+
+                            }
+
+
+
+
+
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br />
+
+        }
+
+
+        @if (Model.Role == "student")
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Godkänd lista</h4>
+                </div>
+                <div class="panel-body">
+                    <table class="table profile__table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Matchad
+                                </th>
+                                <th>
+                                    Sök profil
+                                </th>
+                                <th>
+                                    Roll
+                                </th>
+                                <th>
+                                    Kompetenser
+                                </th>
+                                <!--<th>-->
+                                @*Viktning*@
+                                <!--</th>-->
+                                <th>
+                                    Period
+                                </th>
+                                <!--<th>-->
+                                @*Anordnare*@
+                                <!--</th>-->
+                                <th>
+                                    Kontaktperson
+                                </th>
+                                <th>
+                                    Ort
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var profile in Model.ResponseTwo)
+                            {
+                                if (profile.AcceptedLia == "true" || profile.AcceptedJob == "true")
+                                {
+                                    <tr>
+                                        <td>@profile.companyName</td>
+                                        <td>@profile.searchProfileName</td>
+                                        <td>@profile.Role</td>
+                                        <td>@profile.matchedSkills / @profile.wantedSkills </td>
+
+                                        <td>@profile.period</td>
+                                        <td>@profile.contactPerson</td>
+                                        <td>@profile.area</td>
+
+                                        <td><a href="/Profiles/Organizer/CompanySearchProfileInfo?SearchProfileId=@profile.MatchedSearchProfileId&Company=@profile.companyName">Mer info</a></td>
+                                        <td><form method="post"> <input value="@profile.MatchedSearchProfileId" type="text" name="selectedMatchId" hidden /> <input value="@profile.SearchProfileId" type="text" name="selectedId" hidden />  <input class="btn-primary" value="Ändra" type="submit" name="Change" /> </form></td>
+                                    </tr>
+                                }
+
+
+
+                            }
+
+
+
+                        </tbody>
+
+
+                    </table>
+                </div>
+            </div>
+            <br />
+
+
+
+        }
+
+
+
+    </div>
+    <div>
+        <a href="../Profile">Tillbaka</a>
+    </div>
+</div>

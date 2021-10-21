@@ -1,0 +1,27 @@
+﻿@page
+@model YHmer.Pages.Profiles.MatchMessagesModel
+@{
+}
+<br />
+@foreach (var output in Model.Message)
+{
+    if (output.AcceptedJob == true)
+    {
+        <br />
+        <h5 style="color:red">Du och @output.UserName har matchat med varandra på sök profilen @output.Name för anställning som @output.Role</h5>
+        <a href="/Profiles/Profile?StudentId=@output.Id">Mer info</a>
+        <br />
+
+    }
+    else if (output.AcceptedLIA == true)
+    {
+        <br />
+        <h5 style="color:red">Du och @output.UserName har matchat med varandra på sök profilen @output.Name för LIA praktik som @output.Role</h5>
+        <a href="/Profiles/Profile?StudentId=@output.Id">Mer info</a>
+        <br />
+    }
+}
+
+<div>
+    <a href="./Profile">Tillbaka</a>
+</div>

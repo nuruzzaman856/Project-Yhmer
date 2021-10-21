@@ -1,0 +1,181 @@
+﻿@page
+@model YHmer.Pages.Profiles.Organizer.CompanySearchProfileInfoModel
+@{
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-9">
+
+            <!-- User profile -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        @*<i class="fa fa-angle-left" href="#"></i>*@
+                        @*<a href="#">Go Back</a>*@
+
+                        @*<a href="#" class="table-link danger">
+                                <span class="fa-stack">
+                                    <i class="fa fa-angle-left" href="#"></i>
+                                </span>
+                            </a>*@
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    @*<div class="profile__avatar">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/.NET_Logo.svg/1200px-.NET_Logo.svg.png" alt="...">
+                        </div>*@
+                    <div class="profile__header">
+                        
+                        <h3>@Model.Company</h3>
+                        <br />
+                        <h4>@Model.SearchProfile.Name <small>@*Administrator*@</small></h4>
+                        <p class="text-muted">
+                            @Model.SearchProfile.About
+                        </p>
+                        @*<p>
+                                <a href="#">bootdey.com</a>
+                            </p>*@
+                    </div>
+                </div>
+            </div>
+
+            <!-- User info -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Kurs information</h4>
+                </div>
+                <div class="panel-body">
+                    <table class="table profile__table">
+                        <tbody>
+                            <tr>
+                                <th>Kontakt person</th>
+                                <td>@Model.SearchProfile.Contact</td>
+                            </tr>
+                            <tr>
+                                <th>Kontakt uppgifter</th>
+                                <td>@Model.SearchProfile.ContactInformation</td>
+                            </tr>
+                            <tr>
+                                <th>Roll</th>
+                                <td>@Model.SearchProfile.Role</td>
+                            </tr>
+                            <tr>
+                                <th>Period</th>
+                                <td>@Model.SearchProfile.Period</td>
+                            </tr>
+                            <tr>
+                                <th>Adress</th>
+                                <td>@Model.SearchProfile.Address</td>
+                            </tr>
+                            <tr>
+                                <th>Ort</th>
+                                <td>@Model.SearchProfile.Area</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <table>
+               <thead>
+                   <tr>
+                       <th>Eftersökta kompetenser</th>
+                   </tr>
+               </thead>
+                <tbody>
+                    @foreach(var skill in Model.SearchProfile.Skills)
+            {
+                    <tr>
+                        <td>@skill</td>
+                    </tr>
+            }
+                </tbody>
+                    
+            </table>
+
+
+            <!-- Community -->
+            @*<div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Community</h4>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table profile__table">
+                            <tbody>
+                                <tr>
+                                    <th><strong>Comments</strong></th>
+                                    <td>58584</td>
+                                </tr>
+
+                                <tr>
+                                    <th><strong>Last login</strong></th>
+                                    <td>1 day ago</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>*@
+
+
+
+
+            <!--<div class="col-xs-12 col-sm-3">
+
+                <!--<!-- Contact user -->
+            <!--<form method="post">
+                <input hidden-->
+            <!--@*class="profile__contact-btn btn btn-lg btn-block btn-info" data-toggle="modal" data-target="#profile__contact-form"*@ value="Add Courses" name="AddCourse">
+                <button type="submit" class="btn btn-primary">Lägg till utbildning</button>
+            </form>-->
+            <!--<hr class="profile__contact-hr">-->
+            <!-- Contact info -->
+            <!--<div class="profile__contact-info">
+                <div class="profile__contact-info-item">
+                    <div class="profile__contact-info-icon">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <div class="profile__contact-info-body">
+                        <h5 class="profile__contact-info-heading">Work number</h5>
+                        (000)987-65-43
+                    </div>
+                </div>
+                <div class="profile__contact-info-item">
+                    <div class="profile__contact-info-icon">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <div class="profile__contact-info-body">
+                        <h5 class="profile__contact-info-heading">Mobile number</h5>
+                        (000)987-65-43
+                    </div>
+                </div>
+                <div class="profile__contact-info-item">
+                    <div class="profile__contact-info-icon">
+                        <i class="fa fa-envelope-square"></i>
+                    </div>
+                    <div class="profile__contact-info-body">
+                        <h5 class="profile__contact-info-heading">E-mail address</h5>
+                        <a href="mailto:admin@domain.com">admin@domain.com</a>
+                    </div>
+                </div>
+                <div class="profile__contact-info-item">
+                    <div class="profile__contact-info-icon">
+                        <i class="fa fa-map-marker"></i>
+                    </div>
+                    <div class="profile__contact-info-body">
+                        <h5 class="profile__contact-info-heading">Work address</h5>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    </div>
+                </div>
+            </div>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <br />
+    <br />
+    <div>
+        <a href="/Profiles/Organizer/SearchProfileMatches">Tillbaka</a>
+    </div>
+</div>

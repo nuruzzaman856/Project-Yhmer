@@ -1,0 +1,35 @@
+﻿@page
+@model YHmer.Pages.Admin.EditSkillModel
+@{
+}
+
+
+@if (Model.SkillId != null)
+{
+    <h1>Redigera Kunskap</h1>
+
+}
+else
+{
+    <h1>Lägg till Kunskap</h1>
+}
+<div class="col">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger" name="Header"></div>
+            <div class="form-group">
+
+                <label class="control-label">Kunskap namn</label>
+                <input asp-for="@Model.SkillName" class="form-control" name="Name" type="text" />
+                <span class="text-danger" name="ErrorSpan"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Skapa" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a href="/Admin/Skills">Tillbaka</a>
+</div>

@@ -1,0 +1,193 @@
+﻿@page
+@model YHmer.Pages.Profiles.CompanySearchProfileModel
+@{
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-9">
+            <div class="panel panel-heading">
+                @if (Model.SearchProfileId == null)
+                {
+                    <h1 class="panel-title">
+                        Skapa ny sökprofil
+                    </h1>
+                    <br />
+                }
+                else
+                {
+                    <h1 class="panel-title">
+                        Uppdatera sökprofil
+                    </h1>
+                    <br />
+                }
+                <div class="col-md-12">
+                    <form method="post">
+                        <div class="form-group row">
+                            <label for="profileName" class="col-4 col-form-label">Profilnamn</label>
+                            <div class="col-8">
+                                <input id="profileName" name="Name" placeholder="profilnamn" class="form-control here" type="text" value="@Model.SearchProfile.Name" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="period" class="col-4 col-form-label">Period</label>
+                            <select id="period" name="period" class="form-select col-8" aria-label="select">
+                                <option value="1">VT</option>
+                                <option value="2">HT</option>
+                                <option value="3">Löpande</option>
+                            </select>
+                        </div>
+                        <div class="form-group row">
+                            <label for="contact" class="col-4 col-form-label">Kontakt Person</label>
+                            <div class="col-8">
+                                <input id="contact" name="Contact" placeholder="Kontakt person" class="form-control here" type="text" value="@Model.SearchProfile.Contact" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="contact" class="col-4 col-form-label">Kontakt uppgifter</label>
+                            <div class="col-8">
+                                <input id="contact" name="ContactInformation" placeholder="Kontakt uppgifter" class="form-control here" type="text" value="@Model.SearchProfile.ContactInformation" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="contact" class="col-4 col-form-label">Roll</label>
+                            <div class="col-8">
+                                <input id="contact" name="Role" placeholder="Roll" class="form-control here" type="text" value="@Model.SearchProfile.Role" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="address" class="col-4 col-form-label">Adress</label>
+                            <div class="col-8">
+                                <input id="address" name="Address" placeholder="adress" class="form-control here" type="text" value="@Model.SearchProfile.Address" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="area" class="col-4 col-form-label">Län</label>
+                            <select id="area" name="area" class="form-select col-8" aria-label="select">
+
+                                <option value="0">Norrbotten</option>
+                                <option value="1">Västerbotten</option>
+                                <option value="2">Jämtland</option>
+                                <option value="3">Västernorrland</option>
+                                <option value="4">Gävleborg</option>
+                                <option value="5">Dalarna</option>
+                                <option value="6">Värmland</option>
+                                <option value="7">Uppsala</option>
+                                <option value="8">Västmanland</option>
+                                <option value="9">Stockholm</option>
+                                <option value="10">Södermanland</option>
+                                <option value="11">Jönköping</option>
+                                <option value="12">Örebro</option>
+                                <option value="13">Östergötaland</option>
+                                <option value="14">Västragötaland</option>
+                                <option value="15">Kalmar</option>
+                                <option value="16">Gotland</option>
+                                <option value="17">Halland</option>
+                                <option value="18">Skåne</option>
+                                <option value="19">Blekinge</option>
+                                <option value="20">Kronoberg</option>
+                            </select>
+                        </div>
+                        <div class="form-group row">
+                            <label for="About" class="col-4 col-form-label">Om</label>
+                            <div class="col-8">
+                                <textarea id="About" name="About" cols="40" rows="4" class="form-control">@Model.SearchProfile.About</textarea>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="custom-control custom-checkbox" style="display: inline-block">
+                            <input class="custom-control-input" name="Aktiv" type="checkbox" id="check3" value="@Model.SearchProfile.Aktiv" />
+                            <label style="padding-left: 2rem" class="custom-control-label" for="check3">Gör profil sökbar</label>
+                        </div>
+                        <div class="custom-control custom-checkbox" style="display: inline-block" >
+                            <input class="custom-control-input" name="LIA" type="checkbox" id="check4" value="" />
+                            <label style="padding-left: 2rem" class="custom-control-label" for="check4">LIA</label>
+                        </div>
+                        <div class="custom-control custom-checkbox" style="display: inline-block">
+                            <input class="custom-control-input" name="Anställning" type="checkbox" id="check5" value="" />
+                            <label style="padding-left: 2rem" class="custom-control-label" for="check5">Anställning</label>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <label class="col-4 col-form-label">Kompetens</label>
+                            <div class="col-8">
+                                <input list="SkillsDropDown" class="form-control here" id="SkillsNames" name="SkillsNames" type="text" />
+                                <datalist id="SkillsDropDown">
+                                    @foreach (var skill in Model.VerifiedSkills)
+                                    {
+                                        <option value="@skill.Name">@skill.Name</option>
+                                    }
+                                </datalist>
+                            </div>
+                        </div>
+                        <button onclick="AddSkillRow()" type="button" class="btn btn-primary">Lägg till kompetens</button>
+                        <div>
+                            <p class="text-muted">
+                                OBS! Overifierade kunskaper kommer att behöva verifieras av Admin.
+                            </p>
+                        </div>
+                        <hr />
+
+                        <div id="SkillContainer">
+                            @if (Model.SearchProfileId != null)
+                            {
+                                @foreach (var skill in Model.SearchProfile.Skills)
+                                {
+                                    <div>
+                                        <label class="col-4 col-form-label">@skill</label>
+                                        <input class="SkillName" hidden id="SkillName" name="SkillName" value="@skill" />
+                                        <button onclick="RemoveStudentSkill(this)" style="margin-top: 0rem; margin-left: -4px" class="btn btn-danger" type="button">X</button>
+                                    </div>
+                                }
+                            }
+                        </div>
+
+                        @if (Model.SearchProfileId == null)
+                        {
+                            <input class="btn btn-primary" name="Annonsera" value="Annonsera" style="justify-content:flex-end" type="submit">
+                        }
+                        else
+                        {
+                            <input class="btn btn-primary" name="Uppdatera" value="Uppdatera" style="justify-content:flex-end" type="submit">
+                        }
+                    </form>
+                </div>
+                <br />
+                <h2>Registrerade</h2>
+                <div class="col-md-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Profilnamn</th>
+                                <th>Period</th>
+                                <th>Kontaktperson</th>
+                                <th>Kontaktuppgifter</th>
+                                <th>Ort</th>
+                                <th>Aktiv</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var profile in Model.SearchProfiles)
+                            {
+                                <tr>
+                                    <td>@profile.Name</td>
+                                    <td>@profile.Period</td>
+                                    <td>@profile.ContactInformation</td>
+                                    <td>@profile.Contact</td>
+                                    <td>@profile.Area</td>
+                                    <td>@profile.Aktiv</td>
+                                    <td><a href="/Profiles/CompanySearchProfile?SearchProfileId=@profile.SearchProfileId">Redigera</a></td>
+                                    <td><form method="post"> <input value="@profile.SearchProfileId" type="text" name="selectedId" hidden /> <input class="btn-primary" value="Ta bort" type="submit" name="delete" /> </form></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <a href="/Profiles/Profile">Tillbaka</a>
+    </div>
+</div>

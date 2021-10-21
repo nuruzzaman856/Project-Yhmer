@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using YHmer.Models
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+@{
+    string Token = HttpContextAccessor.HttpContext.Session.GetString("_Token");
+    string UserName = HttpContextAccessor.HttpContext.User.Identity.Name;
+    }
+
+<div>
+    @if (Token != null)
+    {
+        <div>
+            <form class="form-inline" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                <button type="submit" class="nav-link btn btn-link text-dark">Logga ut</button>
+            </form>
+        </div>
+    }
+    else
+    {
+        <div>
+            <a asp-page="/Login/Login">
+                Sign in
+            </a>
+                or
+            <a asp-page = "/Registration/Options" >
+                Sign up
+            </a>
+        </div>
+    }
+</div>

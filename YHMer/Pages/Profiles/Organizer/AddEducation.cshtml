@@ -1,0 +1,116 @@
+﻿@page
+@model YHmer.Pages.Profiles.Organizer.AddEducationModel
+@{
+}
+
+@if (Model.EducationId == null)
+{
+    <h1>Lägg till utbildning</h1>
+}
+else
+{
+    <h1>Uppdatera utbildning</h1>
+}
+<div class="col">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger" name="Header"></div>
+
+            <div class="form-group">
+                <label class="control-label">Utbildning</label>
+                <input asp-for="@Model.Name" class="form-control" name="Name" type="text" />
+                <span class="text-danger" name="ErrorSpan"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">YH-nummer</label>
+                <input asp-for="@Model.YHNumber" class="form-control" name="YHNumber" type="text" />
+                <span class="text-danger" name="ErrorSpan"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Start datum</label>
+                <input asp-for="@Model.StartDate" class="form-control" name="StartDate" type="date" value="@Model.StartDate.ToShortDateString()" />
+                <span asp-validation-for="@Model.StartDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Slut datum</label>
+                <input asp-for="@Model.EndDate" class="form-control" name="EndDate" type="date" value="@Model.EndDate.ToShortDateString()" />
+                <span asp-validation-for="@Model.EndDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Sista ansökningsdag</label>
+                <input asp-for="@Model.LastDateForApplication" class="form-control" name="LastDateForApplication" type="date" value="@Model.LastDateForApplication.ToShortDateString()" />
+                <span asp-validation-for="@Model.LastDateForApplication" class="text-danger"></span>
+            </div>
+
+
+
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item">
+                    <div class="custom-control custom-checkbox">
+                        <input asp-for="@Model.IsLiaCourses" class="custom-control-input" name="IsLiaCourses" type="checkbox" id="check1" />
+                        <label style="padding-left: 2rem" class="custom-control-label" for="check1">LIA-Kurser erbjuds</label>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <!-- Default checked -->
+                    <div class="custom-control custom-checkbox">
+                        <input asp-for="@Model.SearchingForBoardMembers" class="custom-control-input" name="SearchingForBoardMembers" type="checkbox" id="check3" />
+                        <label style="padding-left: 2rem" class="custom-control-label" for="check3">Letar efter styrelsemedlemmar</label>
+                    </div>
+                </li>
+            </ul>
+            @*<div class="form-group" name="IsLiaCourses">
+                    <p>Is this course a LIA-course?</p>
+                    <label>
+                        <input type="button" name="choice-radio" value="Yes">
+                        Yes
+                    </label>
+                    <label>
+                        <input type="radio" name="choice-radio" value="No" >
+                        No
+                    </label>
+                </div>*@
+
+            <div class="form-group">
+                <label class="control-label">Poäng</label>
+                <input asp-for="@Model.Points" class="form-control" name="Points" type="number" /> @*Kom ihåg att ta bort negativa tal*@
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Stad</label>
+                <input asp-for="@Model.City" class="form-control" name="City" type="text" />
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Utbildnings information</label>
+                <textarea name="About" cols="40" rows="4" class="form-control">@Model.About</textarea>
+                <span class="text-danger"></span>
+            </div>
+
+
+            @if (Model.EducationId == null)
+            {
+                <div class="form-group">
+                    <input type="submit" value="Skapa" class="btn btn-primary" />
+                </div>
+            }
+            else
+            {
+                <div class="form-group">
+                    <input type="submit" value="Uppdatera" class="btn btn-primary" />
+                </div>
+            }
+        </form>
+    </div>
+</div>
+
+<div>
+    <a href="../Organizer/Educations?SchoolId=@Model.SchoolId">Tillbaka</a>
+</div>

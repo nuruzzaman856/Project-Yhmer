@@ -1,0 +1,88 @@
+﻿@page
+@model YHmer.Pages.Registration.IndexModel 
+@{
+}
+
+
+
+
+
+
+<br />
+<br />
+<div class="col-md-6 mx-auto">
+    <form method="post">
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+            </div>
+            <input asp-for="UserName" name="UserName" class="form-control" placeholder="Användarnamn" type="text">
+        </div> <!-- form-group// -->
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+            </div>
+            <input asp-for="Email" name="Email" class="form-control" placeholder="Email" type="email">
+        </div> <!-- form-group// -->
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+            </div>
+            <input name="Password" class="form-control" placeholder="Lösenord" type="password">
+        </div> <!-- form-group// -->
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+            </div>
+            <input name="ConfirmPassword" class="form-control" placeholder="Bekräfta lösenord" type="password">
+        </div> <!-- form-group// -->
+        <!--<div class="form-group input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+        </div>
+        <input name="PhoneNumber" class="form-control" placeholder="Phone number" type="text">
+    </div>-->
+        <!-- form-group// -->
+
+        <button type="button" data-toggle="modal" data-target="#modalAgreemet" class="btn btn-primary btn-block"> Skapa konto </button>
+
+        <script type="text/javascript">//Stop Form Submission of Enter Key Press
+            $(function () {
+                $(window).keydown(function (e) {
+                    if (e.keyCode == 13) {
+                        $("#modalAgreemet").modal()
+                    }
+                });
+            })
+        </script>
+
+        <!--Modal-->
+        <div class="modal" id="modalAgreemet" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Avtal för hantering av personuppgifter</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>YHmer sparar de personuppgifter du registrerar och använder dem för att fullfölja hemsidans huvudsyfte. Genom att registrera ett konto godkänner du detta och ingår ett avtal med YHmer för hanteringen av dessa peronuppgifter. För att läsa mer se <a href="../Privacy">Integritetspolicy</a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" name="close" value="Stäng" class="btn btn-secondary"></>
+                        <input value="Godkänn" name="create" type="submit" class="btn btn-primary"></>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <span>
+                <p style="color: red">@Model.HtmlHolder2</p>
+                <p style="color: red">@Model.HTMLPlaceholderOne</p>
+            </span>
+        </div>
+        <p class="text-center">Har du redan ett konto? <a asp-page="/Login/Login">Logga in</a> </p>
+    </form>
+</div>

@@ -1,0 +1,150 @@
+﻿@page
+@model YHmer.Pages.Profiles.Organizer.SchoolsModel
+@{
+    int counter = 0;
+
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 ">
+            <partial name="_OrganizerSideBarPartial" />
+        </div>
+        <div class="box">
+            <h1>Underordnare skolor</h1>
+            <div class="col-lg-12">
+                <div class="main-box clearfix">
+                    <div class="table-responsive">
+
+                        <table class="table user-list">
+                            <thead>
+                                <tr>
+                                    <th><span>Namn</span></th>
+                                    <th><span>Org nummer</span></th>
+                                    <th><span>Kontakt person</span></th>
+                                    <th><span>Kontakt uppgift</span></th>
+                                    <th><span>Adress</span></th>
+                                    <th><span>Stad</span></th>
+                                </tr>
+                            </thead>
+                            @foreach (var school in Model.ResponseMessageList)
+                            {
+                                string ModalName = "MyName";
+                                counter++;
+                                string ModalId = $"{ModalName}{counter}";
+                                
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            @school.Name
+                                        </td>
+                                        <td>
+                                            @school.Orgnr
+                                        </td>
+                                        <td>
+                                            @school.ContactPerson
+                                        </td>
+                                        <td>
+                                            @school.Contacts
+                                        </td>
+                                        <td>
+                                            @school.StreetAdress
+                                        </td>
+                                        <td>
+                                            @school.City
+                                        </td>
+                                        <td>
+                                            <form class="minibuttons" method="post">
+                                                @*<input value="@school.Id" hidden asp-for="SchoolID" name="SelectedSchoolID" />
+                                                <input value="RedirectToInfo" hidden name="ReDirectToInfo" />*@
+                                                <a class="table-link info" href="/Profiles/Organizer/SchoolInfo?SchoolId=@school.Id" onclick="this.parentElement.submit()">
+                                                    <span class="fa-stack" style="color: #0366d6;">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-info-circle fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                            </form>
+
+                                            <form class="minibuttons" method="post">
+                                                @*<input value="@school.Id" hidden asp-for="SchoolID" name="SelectedSchoolID" />
+                                                <input value="Edit" hidden name="Edit" />*@
+                                            <a href="/Profiles/Organizer/AddSchool?SchoolId=@school.Id"  class="table-link strong">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </a>
+                                            </form>
+
+                                            <form method="post" class="minibuttons" name="DeleteSchool">
+                                                
+                                                <input value="Delete" hidden name="deleteschool" />
+
+                                                <a href="#" class="table-link danger" data-toggle="modal" data-target="#@ModalId">
+                                                    <span class="fa-stack">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-times fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+
+                                                <div class="modal fade" id="@ModalId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Ta bort skola?</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Vill du ta bort skolan "@school.Name"?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Nej</button>
+                                                                <input class="SchoolId" value="@school.Id" hidden asp-for="SchoolID" name="SelectedSchoolID" />
+                                                                <button name="delete" type="submit" value="Ja" class="btn btn-danger">Ja</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                @*<partial name="_DeleteModalPartial" />*@
+                                            </form>
+                                        </td>
+                                        
+                                        <td>
+                                            <form method="post">
+                                                @*<input value="@school.Id" hidden asp-for="SchoolID" name="SelectedSchoolID" />
+                                                <input value="SetSchoolID" hidden name="SetSchoolID" />*@
+                                            <a href="/Profiles/Organizer/Educations?SchoolId=@school.Id">Se tillhörande utbildningar</a>
+                                            </form>
+                                        </td>
+                                       
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box">
+        <div>
+
+
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
+
+        </div>
+    </div>
+    
+    <a href="/Profiles/Organizer/AddSchool" name="AddSchool" class="btn btn-primary">Lägg till skola</a>
+    
+
+
+</div>

@@ -1,0 +1,145 @@
+﻿@page
+@model YHmer.Pages.SkillAndSearchProfile.SearchProfileInfoStudentModel
+@{
+}
+
+<div class="container-fluid">
+
+    <div class="main-body">
+        <div class="row ">
+            <partial name="_StudentSideBarPartial" />
+
+            <div class="col-lg-6  mb-auto">
+                <h4>Sök Profilinformation</h4>
+                <div class="card">
+                    <div class="col-md-12">
+
+                        <div class="panel panel-default">
+                            @*<div class="panel-heading">
+
+                        </div>*@
+
+                            <div class="panel-body">
+                                <table class="table profile__table">
+                                    <tbody>
+                                        <tr>
+                                            <th>Gör profil sökbar för LIA:</th>
+                                            <td>@Model.MakeProfileSearchable.</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Söker anställning efter examen:</th>
+                                            <td>@Model.LookingForEmploymentAfterExam</td>
+                                        </tr>
+
+                                        @*<tr>
+                                        <th>Antal år:</th>
+                                        <td>@Model.searchProfileInfoModel.yearsOfExprienceInCompany</td>
+                                    </tr>*@
+                                        <tr>
+                                            <th>Visa mina betyg från anordnare:</th>
+                                            <td>@Model.ViewMyGradsFromOrganizers</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Ort:</th>
+                                            <td>@Model.searchProfileInfoModel.Area</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Om:</th>
+                                            <td>@Model.searchProfileInfoModel.freeTextDescription</td>
+                                        </tr>
+                                        @if (Model.ResponseSkills != null)
+                                        {
+
+                                            <tr>
+                                                <th><span>Kunskap namn</span></th>
+                                                <th><span>Verifierad</span></th>
+                                                <th><span>Antal år</span></th>
+                                                <th><span>Kunskap nivå</span></th>
+
+                                            </tr>
+
+                                            foreach (var skill in Model.ResponseSkills)
+                                            {
+                                                <tr>
+
+                                                    <td>@skill.name</td>
+
+                                                    @if (skill.IsVerified)
+                                                    {
+                                                        <td>Ja</td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>Nej</td>
+                                                    }
+
+
+                                                    <td>@skill.yearsOfExperience</td>
+
+                                                    <td>@skill.skillLevel</td>
+                                                </tr>
+
+                                            }
+                                        }
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+            @*<form method="post" class="minibuttons">
+            <input value="@Model.SearchProfileId" hidden name="SelectedSearchProfileId" />
+            <input value="Delete" hidden name="SearchProfile" />
+            <a onclick="this.parentElement.submit()" href="#" class="table-link danger">
+                <span class="fa-stack">
+                    <i class="fa fa-square fa-stack-2x"></i>
+                    <i class="fa fa-times fa-stack-1x fa-inverse"></i>
+                </span>
+            </a>
+        </form>*@
+
+
+
+
+
+
+
+
+        </div>
+
+
+        <div class="split left">
+            <form method="post">
+                <input value="@Model.searchProfileInfoModel.id" hidden name="SelectButton" />
+                <button type="submit" name="UpdateSearchProfile" class="btn btn-primary" value="UpdateSearchProfile">Update SökProfil Info</button>
+            </form>
+        </div>
+
+        <div class="split right">
+            <form method="post">
+                <input value="@Model.searchProfileInfoModel.id" hidden name="SelectButton" />
+                <button type="submit" name="DeleteSearchProfile" class="btn btn-danger" value="@Model.searchProfileInfoModel.id">Delete Sök Profile</button>
+            </form>
+        </div>
+
+    </div>
+
+
+
+
+
+    <hr />
+    <div>
+        <a href="../Profiles/Profile" style=" margin-left :auto">Tillbaka</a>
+    </div>
+
+
+</div>

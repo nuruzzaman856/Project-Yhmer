@@ -1,0 +1,219 @@
+@page
+@model YHmer.Pages.SearchProfile.SearchProfileModel
+@{
+}
+
+
+
+
+<div class="container-fluid">
+    <div class="main-body">
+        <div class="row ">
+            <partial name="_StudentSideBarPartial" />
+
+            <div class="col-lg-6  mb-auto">
+                <h4>SökProfil</h4>
+                <div class="card">
+                    <div class="col-md-12">
+                        <form method="post">
+                            <div class="main-box clearfix">
+
+
+                                <hr />
+
+                                <div asp-validation-summary="ModelOnly" class="text-danger" name="Header"></div>
+
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            <input value="@Model.MakeProfileSearchable" class="custom-control-input" name="MakeProfileSearchable" type="checkbox" id="MakeProfileSearchable" />
+                                            <label style="padding-left: 2rem" class="custom-control-label" for="MakeProfileSearchable">Gör profil sökbar för LIA</label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            <input value="@Model.LookingForEmploymentAfterExam" class="custom-control-input" name="LookingForEmploymentAfterExam" type="checkbox" id="LookingForEmploymentAfterExam" />
+                                            <label style="padding-left: 2rem" class="custom-control-label" for="LookingForEmploymentAfterExam">Söker anställning efter examen</label>
+                                        </div>
+
+                                    </li>
+
+                                </ul>
+
+
+
+
+
+
+                                <!--<div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Ange branschkunskap
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">IT</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+
+
+                                    <button class="btn btn-primary" style="justify-content:flex-end ">Addera</button>-->
+                                    @*<div id="SkillContainer"></div>*@
+                                    <!--<button onclick="AddSkillBox()" type="button" class="btn btn-primary">Lägg till branschkunskap</button>
+
+                                </div>-->
+                                @*<hr />
+                                <div class="form-group row">
+                                    <label for="YearsOfExprince" class="col-4 col-form-label">Antal år</label>
+                                    <div class="col-8">
+                                        <input name="YearsOfExprienceInCompany" placeholder="YearsOfExprince" type="number" class="form-control" value="@Model.YearsOfExprienceInCompany" id="YearsOfExprienceInCompany">
+                                    </div>
+                                </div>*@
+                                <hr />
+
+
+                                <div class="form-group row">
+                                    <label for="SkillName" class="col-4 col-form-label">Kunskap</label>
+                                    <div class="col-8">
+                                        <input list="SkillsDropDown" id="SkillName" name="SkillName" placeholder="Kunskap nam" class="form-control here" type="text" value="@Model.SkillName" />
+                                        <datalist id="SkillsDropDown">
+                                            @foreach (var skill in Model.VerifiedSkills)
+                                            {
+                                                <option value="@skill.Name">@skill.Name</option>
+                                            }
+                                        </datalist>
+                                    </div>
+                                    <label for="SkillLevel" class="col-4 col-form-label">Kunskap nivå</label>
+                                    <select class="col-8" id="SkillLevel" name="SkillLevel">
+                                        <option value="1">Teoretiks</option>
+                                        <option value="2">Rookie</option>
+                                        <option value="3">Medel</option>
+                                        <option value="4">Hög</option>
+                                        <option value="5">Professionell</option>
+                                    </select>
+                                    <label for="YearsOfExperience" class="col-4 col-form-label">Antal år</label>
+                                    <div class="col-8">
+                                        <input id="YearsOfExperience" name="YearsOfExperience" placeholder="YearsOfExperience" class="form-control here" type="number" value="@Model.YearsOfExperience">
+                                    </div>
+                                    <div class="col-10">
+                                        <button onclick="AddStudentSkillRows()" class="btn btn-primary" type="button">Lägg till kunskap</button>
+                                        <div>
+                                            <p class="text-muted">
+                                                OBS! Overifierade kunskaper kommer att behöva verifieras av Admin.
+                                            </p>
+                                        </div>
+                                        <div id="SkillContainer" style="margin-top:2rem">
+
+                                        </div>
+                                        @*<a class="btn btn-primary" href="../SkillAndSearchProfile/AddSkill">Addera</a>*@
+
+                                    </div>
+                                </div>
+                                <hr />
+                                @*<div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Ange nivå
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">IT</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                    <hr />*@
+
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <div class="custom-control custom-checkbox">
+                                            <input value="@Model.ViewMyGradsFromOrganizers" class="custom-control-input" name="ViewMyGradsFromOrganizers" type="checkbox" id="ViewMyGradsFromOrganizers" />
+                                            <label style="padding-left: 2rem" class="custom-control-label" for="ViewMyGradsFromOrganizers">Visa mina betyg från anordnare</label>
+                                        </div>
+                                    </li>
+
+
+                                </ul>
+
+
+
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    @*<div class="card m-md-4">
+            <p></p>
+
+            <textarea ty name="Fritextbeskrivning" class="form-control" id="Fritextbeskrivning" cols="40" rows="10" placeholder="Fritextbeskrivning" asp-for="@Model.FreeTextDescription"></textarea><br />
+
+        </div>*@
+                                    <div class="form-group">
+                                        <label for="area" class="col-4 col-form-label">Län</label>
+                                        <select id="area" name="area" class="form-select col-8" aria-label="select">
+                                            <option value="0">Norrbotten</option>
+                                            <option value="1">Västerbotten</option>
+                                            <option value="2">Jämtland</option>
+                                            <option value="3">Västernorrland</option>
+                                            <option value="4">Gävleborg</option>
+                                            <option value="5">Dalarna</option>
+                                            <option value="6">Värmland</option>
+                                            <option value="7">Uppsala</option>
+                                            <option value="8">Västmanland</option>
+                                            <option value="9">Stockholm</option>
+                                            <option value="10">Södermanland</option>
+                                            <option value="11">Jönköping</option>
+                                            <option value="12">Örebro</option>
+                                            <option value="13">Östergötaland</option>
+                                            <option value="14">Västragötaland</option>
+                                            <option value="15">Kalmar</option>
+                                            <option value="16">Gotland</option>
+                                            <option value="17">Halland</option>
+                                            <option value="18">Skåne</option>
+                                            <option value="19">Blekinge</option>
+                                            <option value="20">Kronoberg</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Fritextbeskrivning</label>
+                                        <input asp-for="@Model.FreeTextDescription" class="form-control" ols="40" rows="10" name="FreeTextDescription" type="text" />
+                                        <span class="text-danger" name="ErrorSpan"></span>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+
+                            <button style=" margin-right: auto" type="submit" class="btn btn-primary">Spara</button>
+                        </form>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+
+    <hr />
+    <div>
+        <a href="../Profiles/Profile" style=" margin-left :auto">Tillbaka</a>
+    </div>
+
+
+</div>

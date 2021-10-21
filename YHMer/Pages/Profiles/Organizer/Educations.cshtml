@@ -1,0 +1,157 @@
+﻿@page
+@model YHmer.Pages.Profiles.Organizer.EducationsModel
+@{
+    int counter = 0;
+
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 ">
+            <partial name="_OrganizerSideBarPartial" />
+        </div>
+        <div class="box">
+            <h1>Utbildningar</h1>
+            <p class="helptext">Se mer om specifik utbildning via knappval.</p>
+            <div class="col-lg-12">
+                <div class="main-box clearfix">
+                    <div class="table-responsive">
+
+                        <table class="table user-list">
+                            <thead>
+                                <tr>
+                                    <th><span>Namn</span></th>
+                                    <th><span>Start datum</span></th>
+                                    <th><span>Slut datum</span></th>
+                                    <th><span>YH-Poäng</span></th>
+                                    <th><span>LIA Kurs</span></th>
+                                    <th><span>Söker styrelsemedlem</span></th>
+                                    <th><span>Plats</span></th>
+                                </tr>
+                            </thead>
+                            @foreach (var education in Model.recivedlistofEdu)
+                            {
+                                string ModalName = "MyName";
+                                counter++;
+                                string ModalId = $"{ModalName}{counter}";
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            @education.Name
+                                        </td>
+                                        <td>
+                                            @education.StartDate.ToShortDateString()
+                                        </td>
+                                        <td>
+                                            @education.EndDate.ToShortDateString()
+                                        </td>
+                                        <td>
+                                            @education.Points
+                                        </td>
+                                        @if (education.IsLiaCourses)
+                                        {
+                                            <td>
+                                                Ja
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                Nej
+                                            </td>
+                                        }
+                                        @if (education.SearchingForBoardMembers)
+                                        {
+                                            <td>
+                                                Ja
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                               Nej
+                                            </td>
+                                        }
+                                        <td>
+                                            @education.City
+                                        </td>
+                                        <td>
+                                            <form class="minibuttons" method="post">
+                                                <a href="/Profiles/Organizer/EducationInfo?EducationId=@education.ID&SchoolId=@Model.SchoolId" class="table-link strong">
+                                                    <span class="fa-stack" style="color: #0366d6;">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-info-circle fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                            </form>
+
+                                            <form class="minibuttons" method="post">
+                                                <a href="/Profiles/Organizer/AddEducation?EducationId=@education.ID&SchoolId=@Model.SchoolId" class="table-link strong">
+                                                    <span class="fa-stack">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                            </form>
+
+                                            <form method="post" class="minibuttons">
+                                                <input value="@education.ID" hidden name="SelectedEducationID" />
+                                                <input value="Delete" hidden name="deleteeducation" />
+
+                                                <a href="#" class="table-link danger" data-toggle="modal" data-target="#@ModalId">
+                                                    <span class="fa-stack">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-times fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+
+                                                <div class="modal fade" id="@ModalId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Ta bort utbildning?</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Vill du ta bort utbildningen "@education.Name"?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Nej</button>
+                                                                <button name="delete" type="submit" value="Ja" class="btn btn-danger">Ja</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+        <a class="btn btn-primary" href="/Profiles/Organizer/AddEducation?SchoolId=@Model.SchoolId">Lägg till utbildning</a>
+    
+
+    <div class="box">
+        <div>
+
+
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
+
+        </div>
+    </div>
+</div>

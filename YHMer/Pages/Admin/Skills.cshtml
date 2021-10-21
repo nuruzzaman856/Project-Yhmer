@@ -1,0 +1,167 @@
+﻿@page
+@model YHmer.Pages.Admin.SkillsModel
+@{
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container-fluid">
+
+    <div margin-left:2rem;">
+        <div class="row">
+            <h1>Acceptera kunskaper</h1>
+            <div class="col-lg-12">
+                <div class="main-box clearfix">
+                    <div class="table-responsive">
+                        <table class="table user-list">
+                            <thead>
+                                <tr>
+                                    <th><span>Kunskap</span></th>
+                                    <th><span>Är verifierad</span></th>
+                                    <th><span>Skapad</span></th>
+                                </tr>
+                            </thead>
+                            @foreach (var skill in Model.UnverifiedSkills)
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            @skill.Name
+                                        </td>
+                                        @if (skill.IsVerified)
+                                        {
+                                            <td>
+                                                Ja
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                Nej
+                                            </td>
+                                        }
+                                        <td>
+                                            @skill.Created
+                                        </td>
+                                        <td style="display:flex; flex-direction: row;">
+                                            <form class="minibuttons" method="post">
+                                                <input value="@skill.Id" hidden name="VerifySkill" />
+                                                <a class="table-link info" onclick="this.parentElement.submit()">
+                                                    <span class="fa-stack" style="color: #0366d6;">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-check fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                            </form>
+                                            <form class="minibuttons" method="post">
+                                                <input value="@skill.Id" hidden name="EditSkill" />
+                                                <a href="/Admin/Skill?SkillId=@skill.Id" class="table-link primary">
+                                                    <span class="fa-stack">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                            </form>
+                                            <form class="minibuttons" method="post">
+                                                <input value="@skill.Id" hidden name="SelectButton" />
+                                                <a href="/Admin/ReplaceSkill?Skill=@skill.Name" class="table-link primary">
+                                                    <span class="fa-stack">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-exchange fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                            </form>
+                                            <form class="minibuttons" method="post">
+                                                <input value="@skill.Id" hidden name="DeleteSkill" />
+                                                <a onclick="this.parentElement.submit()" href="#" class="table-link danger">
+                                                    <span class="fa-stack">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-times fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h1>Verifierade Kunskaper</h1>
+            <div class="col-lg-12">
+                <div class="main-box clearfix">
+                    <div class="table-responsive">
+                        <table class="table user-list">
+                            <thead>
+                                <tr>
+                                    <th><span>Kunskap</span></th>
+                                    <th><span>Är verifierad</span></th>
+                                    <th><span>Skapad</span></th>
+                                </tr>
+                            </thead>
+                            @foreach (var skill in Model.VerifiedSkills)
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                           @skill.Name
+                                        </td>
+                                        @if (skill.IsVerified)
+                                        {
+                                            <td>
+                                                Ja
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                Nej
+                                            </td>
+                                        }
+                                        <td>
+                                            @skill.Created
+                                        </td>
+                                        <td style="display:flex; flex-direction: row;">
+                                            <form class="minibuttons" method="post">
+                                                <input value="@skill.Id" hidden name="EditSkill" />
+                                                <a href="/Admin/Skill?SkillId=@skill.Id" class="table-link primary">
+                                                    <span class="fa-stack">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                            </form>
+                                            <form class="minibuttons" method="post">
+                                                <a href="/Admin/ReplaceSkill?Skill=@skill.Name" class="table-link primary">
+                                                    <span class="fa-stack">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-exchange fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                            </form>
+                                            <form class="minibuttons" method="post">
+                                                <input value="@skill.Id" hidden name="DeleteSkill" />
+                                                <a onclick="this.parentElement.submit()" href="#" class="table-link danger">
+                                                    <span class="fa-stack">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-times fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="/Admin/Skill" name="AddSkillDirector" class="btn btn-primary" value="AddSkill">Lägg till Kunskup</a>
+    <hr />
+    <div>
+        <a href="../Profiles/Profile">Tillbaka</a>
+    </div>
+</div>

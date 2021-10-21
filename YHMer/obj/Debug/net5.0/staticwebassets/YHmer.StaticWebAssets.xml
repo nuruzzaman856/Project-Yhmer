@@ -1,0 +1,4 @@
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="/Identity" Path="C:\Users\nuruz\.nuget\packages\microsoft.aspnetcore.identity.ui\5.0.3\staticwebassets\V4\" />
+  <ContentRoot BasePath="_content/YHmerApi" Path="C:\Users\nuruz\Desktop\YHMERGitRep\yhmer\YHmerApi\wwwroot\" />
+</StaticWebAssets>

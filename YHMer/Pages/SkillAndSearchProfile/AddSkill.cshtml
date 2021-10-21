@@ -1,0 +1,46 @@
+﻿@page
+@model YHmer.Pages.SkillAndSearchProfile.AddSkillModel
+@{
+}
+
+
+
+<h1>Lägg till Kunskap</h1>
+<div class="col">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger" name="Header"></div>
+
+            <div class="form-group">
+                <label class="control-label">Kunskap namn</label>
+                <input asp-for="@Model.Name" class="form-control" name="Name" type="text" />
+                <span class="text-danger" name="ErrorSpan"></span>
+            </div>
+
+            <label for="SkillLevel" class="col-4 col-form-label">Kunskap nivå</label>
+            <select class="col-8" id="SkillLevel" name="SkillLevel">
+                <option value="1">Teoretiks</option>
+                <option value="2">Rookie</option>
+                <option value="3">Medel</option>
+                <option value="4">Hög</option>
+                <option value="5">Professionell</option>
+            </select>
+
+
+            <div class="form-group">
+                <label class="control-label">År av erfarenhet</label>
+                <input asp-for="@Model.YearsOfSkill" class="form-control" name="YearsOfSkill" type="number" />
+                <span class="text-danger" name="ErrorSpan"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Skapa" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a href="../SkillAndSearchProfile/Skills">Tillbaka</a>
+</div>
